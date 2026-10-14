@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Demo
-subtitle:
+title: xunyue
+subtitle: ''
 description: "一个基于 Hexo + Fomalhaut 主题的演示站点"
 keywords: "Hexo,Butterfly,Fomalhaut,博客,主题,卡片式UI"
-author: Demo
+author: xunyue
 language: zh-CN
 timezone: ""
 
