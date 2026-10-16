@@ -1212,7 +1212,7 @@ inject:
     - <style id="transPercent"></style> # 透明度调节
     - <style id="bgFilterParam"></style> # 背景滤镜
     - <span id="fps" aria-hidden="true"></span> # 帧率检测（纯装饰，读屏不播报）
-    - <style id="defineBg">:root{--default-bg:url(/assets/002.webp);--darkmode-bg:url(/assets/004.jpg);--mobileday-bg:url(/assets/002.webp);--mobilenight-bg:url(/assets/004.jpg);}</style> # 默认背景（内联兜底：即使 fomal.js 未执行，首屏也有背景图；运行时会被 fomal.js 覆盖）
+    - <style id="defineBg">:root{--default-bg:url(/assets/005.jpg);--darkmode-bg:url(/assets/004.jpg);--mobileday-bg:url(/assets/005.jpg);--mobilenight-bg:url(/assets/004.jpg);}</style> # 默认背景（内联兜底：即使 fomal.js 未执行，首屏也有背景图；运行时会被 fomal.js 覆盖）
     # 注意：夜间那张的地址必须与 source/js/modules/settings.js 的 resetBg_() 逐字一致 ——
     # 运行时覆盖前浏览器已按这里的值下过一份，URL 不一致就会同一张图下两份。
     - <style id="menu_shadow"></style> # 菜单发光样式

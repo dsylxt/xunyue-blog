@@ -743,9 +743,9 @@ function resetBg_() {
   var el = document.getElementById("defineBg");
   if (!el) return;
   el.innerText = `:root{
-    --default-bg: url(/assets/002.webp);
+    --default-bg: url(/assets/005.jpg);
     --darkmode-bg:url(/assets/004.jpg);
-    --mobileday-bg: url(/assets/002.webp);
+    --mobileday-bg: url(/assets/005.jpg);
     --mobilenight-bg: url(/assets/004.jpg);
   }`;
 }
