@@ -36,7 +36,7 @@
    * 150ms 是它的正常档；本实现每字自带 .34s 动画，节奏必须更快才不显拖沓，
    * 所以按系数换算。想整体更快/更慢：只改 SPEED_SCALE / BACK_SCALE。 */
   var TUNING = {
-    SPEED_SCALE: 0.42,   // 打字间隔 = 主题 typeSpeed x 该系数（150 -> 63ms）
+    SPEED_SCALE: 0.9,   // 打字间隔 = 主题 typeSpeed x 该系数（150 -> 63ms）
     BACK_SCALE: 0.55,    // 退格间隔 = 主题 backSpeed x 该系数（50 -> 27ms）
     MIN_TYPE: 34, MAX_TYPE: 110,
     MIN_BACK: 14, MAX_BACK: 60,
