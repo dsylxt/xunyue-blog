@@ -795,7 +795,7 @@ tag_ui: # 留空或 index
 # "#e4f4f6" "#efefef"
 background:
   #【必选】默认背景 url(https://picsum.photos/id/1015/1920/1080)
-  default: https://beeimg.us.ci/temp/6ad1dc04c35f0.jpg #var(--default-bg)
+  default: url(https://beeimg.us.ci/temp/6ad1dc04c35f0.jpg) #var(--default-bg)
   #【可选】PC端夜间模式背景 url(https://picsum.photos/id/1044/1920/1080)
   darkmode: var(--darkmode-bg)
   #【可选】移动端日间默认背景 url(https://picsum.photos/id/1018/1920/1080)
@@ -960,7 +960,7 @@ aside:
       enable: true
       icon: # fab fa-github
       text: Github主页
-      link: https://github.com/yourname
+      link: https://github.com/dsylxt
   card_announcement:
     enable: true
     content: |
