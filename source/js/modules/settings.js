@@ -742,7 +742,10 @@ restoreAppearanceBackground();
 function resetBg_() {
   var el = document.getElementById("defineBg");
   if (!el) return;
-  el.innerText = `:root{
+  // 2026-10-16：优先回写 beauty-boot.js 备份下来的「配置默认值」（#defineBg 的初始内容），
+  // 让默认背景只有一个数据源 —— _config.fomalhaut.yml 的 <style id="defineBg">。
+  // 以前这里写死 /assets/005.jpg，配置改了默认背景也会被它覆盖。备份缺失时才退回旧图兜底。
+  el.innerText = window.__configDefineBg || `:root{
     --default-bg: url(/assets/005.jpg);
     --darkmode-bg:url(/assets/004.jpg);
     --mobileday-bg: url(/assets/005.jpg);

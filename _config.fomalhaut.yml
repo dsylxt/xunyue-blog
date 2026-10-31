@@ -1213,8 +1213,10 @@ inject:
     - <style id="bgFilterParam"></style> # 背景滤镜
     - <span id="fps" aria-hidden="true"></span> # 帧率检测（纯装饰，读屏不播报）
     - <style id="defineBg">:root{--default-bg:url(/assets/005.jpg);--darkmode-bg:url(/assets/004.jpg);--mobileday-bg:url(/assets/005.jpg);--mobilenight-bg:url(/assets/004.jpg);}</style> # 默认背景（内联兜底：即使 fomal.js 未执行，首屏也有背景图；运行时会被 fomal.js 覆盖）
-    # 注意：夜间那张的地址必须与 source/js/modules/settings.js 的 resetBg_() 逐字一致 ——
-    # 运行时覆盖前浏览器已按这里的值下过一份，URL 不一致就会同一张图下两份。
+    # 2026-10-16：本行是默认背景的「唯一数据源」，改这里即可全站生效。
+    #   settings.js 的 resetBg_() 现在回写 beauty-boot.js 备份下来的本行内容（window.__configDefineBg），
+    #   不再写死旧图 —— 以前两处各存一份，配置改了会被 resetBg_() 覆盖回旧图（打开时闪一下）。
+    #   旧约束「夜间那张地址必须与 resetBg_() 逐字一致」已由备份机制自动满足，无需再手工同步。
     - <style id="menu_shadow"></style> # 菜单发光样式
     - <style id="nav-display"></style> # 菜单栏常驻
     - <style id="aside-show"></style> # 侧栏显隐
@@ -1268,7 +1270,7 @@ inject:
     # 回滚：删掉下面这两行即可（不需要清 public/）。
     - <script src="/js/inject/ping-route-boot.js"></script> # 延时探测参数（必须在 ping-route.js 之前执行）
     - <script src="/js/inject/ping-route.js"></script> # 公告栏线路延时徽标
-    - <script src="/js/inject/beauty-boot.js?v=20261015-solid3"></script> # 美化模块首屏预置（原内联 beautyBoot）
+    - <script src="/js/inject/beauty-boot.js?v=20261016-configbg1"></script> # 美化模块首屏预置（原内联 beautyBoot）；2026-10-16 起额外备份 #defineBg 配置值供 resetBg_() 回写
     - <script src="/js/inject/right-menu-state-boot.js"></script> # 侧栏「右键模式」按钮状态同步
     # ── 首页副标题打字机「丝滑版」（站点独立脚本 + 样式，不改主题源码）────────────
     # 主题 subtitle.pug 调 Typed.js 时是 typeSpeed:150 的逐字硬蹦；source/js/inject/typewriter.js
@@ -1348,7 +1350,7 @@ inject:
     - <script defer src="/js/modules/appearance-backgrounds.js?v=20261011-bgflash1"></script> # 背景图库/预览与加载保护
     - <script defer src="/js/modules/fireflies.js?v=20261010-fireflies1"></script> # 萤火虫微光（默认关闭，低密度）
     - <script defer src="/js/modules/ripple.js?v=20261014-ripple1"></script> # 点击涟漪（第 4 个互动挂件，默认关闭，跟随主题色）
-    - <script defer src="/js/modules/settings.js?v=20261015-custom1"></script> # 美化模块（右下角齿轮设置面板，最大的一块）
+    - <script defer src="/js/modules/settings.js?v=20261016-configbg1"></script> # 美化模块（右下角齿轮设置面板，最大的一块）；2026-10-16 resetBg_() 改为回写配置默认背景
     - <script defer src="/js/fomal.js"></script> # 站点主引导：模块地图 + 控制台策略 + 全局入口清单
     - <script defer src="/js/wechat-qr.js"></script> # 微信二维码点击弹层展示（同页灯箱，不跳转/不下载）
     - <script defer src="/js/festival.js"></script> # 节日提醒卡片（左上角通知）

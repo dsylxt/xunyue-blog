@@ -23,6 +23,13 @@
   var SAME = ";--darkmode-bg:";
   // 新增互动偏好：首帧就隐藏关闭的挂件（猫咪由 deferred 脚本创建）。
   d.classList.toggle('beauty-neko-off', ls('nekoOn') === '0');
+  // 0) 备份配置里的默认背景（2026-10-16）
+  //    _config.fomalhaut.yml 的 <style id="defineBg"> 在 head 里、本脚本之前注入，所以这里
+  //    读到的就是「配置值」。settings.js 的 resetBg_() 会回写它 —— 否则配置里改过的默认背景
+  //    会被 settings.js 里写死的旧图顶掉（表现为打开页面先按配置显示一帧、随后闪回旧图）。
+  //    必须在下面「1) 自定义壁纸」覆盖 #defineBg 之前执行。
+  var bgDefaultEl = document.getElementById("defineBg");
+  if (bgDefaultEl) window.__configDefineBg = bgDefaultEl.textContent;
   // 1) 自定义壁纸
   var bg = def(ls("blogbg"), "default").replace(/^\s+|\s+$/g, "");
   if (bg !== "default" && /^(#|url\(|linear-gradient|radial-gradient|https?:)/.test(bg)) {
