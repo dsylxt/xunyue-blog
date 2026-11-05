@@ -105,11 +105,11 @@ mathjax:
 
 # Favicon（網站圖標）
 favicon:
-
+  img: /assets/touxiang.jpg
 # Avatar (頭像)
 avatar:
   img: /assets/touxiang.jpg
-  effect: false
+  effect: true
 
 # Disable all banner image
 disable_top_img: false
@@ -926,11 +926,16 @@ subtitle:
   source: false
   # 如果關閉打字效果，subtitle 只會顯示 sub 的第一行文字
   sub:
-    # - "Welcome to xunyueのTiny Home!🤣🤣🤣"
+    - "Welcome to xunyueのTiny Home!🤣🤣🤣"
     - "你一句春不晚,我就到了真江南"
     - "我迎着风,淋着雨,追寻漫天星光"
+    - "你是信的开头,诗的内容,童话的结尾"
     - "人海山川,不过尔尔"
-    - "一眼肝胆颤，二眼实喜欢，爱再三"
+    - "一眼肝胆颤,二眼实喜欢,爱再三"
+    - "写尽君心爱意,寥寥几笔"
+    - "我倾泻告白千万页,一字一句都是真切"
+    - "我等春风吹来,梨花朵朵盛开"
+    - "曲终之时,你是否会回应我的心音"
   
    
 
