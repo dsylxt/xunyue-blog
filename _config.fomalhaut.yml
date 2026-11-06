@@ -1232,6 +1232,12 @@ inject:
     # / #defineBg / #menu_shadow / #nav-display / #aside-show / #aside-pos 是"运行时空槽"：
     # 由右下角美化面板的 JS 在运行时往里写 CSS，不能删、不能挪位置。
     - <link rel="stylesheet" href="/css/site-inject.css?v=20261015-fps4">
+    # ── 首页顶部文字对比度增强（站点独立样式，不改主题源码）─────────────────────
+    # source/css/hero-contrast.css：本站 #page-header 背景透明、全屏遮罩又被 z-index:-3
+    #   压到背景图下面，白色标题压在浅色插画上读不清。这里只在 #site-info 底下铺局部
+    #   渐变暗场 + 加强文字阴影，不整屏变暗；仅首页 .full_page 生效，深浅改文件里两个
+    #   --hero-dim-* 变量。改文件记得把 ?v= 一起提版本。回滚：删掉下面这一行即可。
+    - <link rel="stylesheet" href="/css/hero-contrast.css?v=20261106a">
     # 导航磨砂底色与工具区间距（独立覆盖；保留主题导航显示/折叠逻辑）
     - <link rel="stylesheet" href="/css/navigation.css?v=20261011-nav3">
     # ── 手机端抽屉菜单改版（站点独立样式，不改主题源码）────────────────────────

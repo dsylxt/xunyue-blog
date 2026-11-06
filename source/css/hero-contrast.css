@@ -1,0 +1,93 @@
+/* ============================================================================
+ * source/css/hero-contrast.css —— 首页顶部文字对比度增强
+ * ----------------------------------------------------------------------------
+ * 问题：本站点把 #page-header 设成 background: transparent，全站背景图由 #web_bg
+ *   承担；主题 custom.css 又给 [data-theme=light] #page-header:before 设了
+ *   z-index: -3，那层 rgba(0,0,0,.2) 遮罩被压到背景图下面，等于完全不存在。
+ *   白色标题 + 仅 2px 2px 4px rgba(0,0,0,.15) 的阴影，压在浅色插画上几乎读不出来，
+ *   副标题默认还是浅灰 var(--light-grey)，更淡。
+ *
+ * 做法：不恢复「整屏变暗」（会让插画整体发灰，custom.css 里也特意注释了不建议），
+ *   只在文字底下铺一层局部径向渐变暗场，并加强文字本身的颜色 / 字重 / 多重阴影。
+ *   作用域严格限定 #page-header.full_page（首页全屏头图），文章页、归档页不受影响。
+ *
+ * 引入：inject.head 的
+ *   <link rel="stylesheet" href="/css/hero-contrast.css?v=20261106a">
+ * 回滚：删掉 inject.head 那一行即可；改文件内容后记得把 ?v= 提版本，否则吃缓存。
+ * 调节：下面两个 --hero-dim-* 就是暗场深浅，数值越大越暗。
+ * ========================================================================== */
+
+#page-header.full_page {
+  --hero-dim-core: .50;   /* 暗场中心黑度：.35 淡 ~ .65 浓 */
+  --hero-dim-edge: .28;   /* 暗场中段黑度，一般为核心值的一半左右 */
+}
+
+/* 1) 文字区域底下的柔和暗场：只盖住文字附近，四周插画保持原色 */
+#page-header.full_page #site-info::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 94vw);
+  height: 210px;
+  background: radial-gradient(ellipse at center,
+      rgba(0, 0, 0, var(--hero-dim-core)) 0%,
+      rgba(0, 0, 0, var(--hero-dim-edge)) 42%,
+      transparent 74%);
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+/* 让文字显式盖在暗场之上（::before 在 DOM 里排最前，这里是兜底） */
+#page-header.full_page #site-info > * {
+  position: relative;
+}
+
+/* 2) 标题 / 副标题 / 社交图标：纯白 + 三重阴影，浅色背景上也能读 */
+#page-header.full_page #site-title,
+#page-header.full_page #site-subtitle,
+#page-header.full_page #site_social_icons .social-icon {
+  color: #fff !important;
+  text-shadow:
+      0 1px 2px rgba(0, 0, 0, .85),
+      0 2px 8px rgba(0, 0, 0, .65),
+      0 0 22px rgba(0, 0, 0, .45) !important;
+}
+
+#page-header.full_page #site-subtitle {
+  font-weight: 600;
+}
+
+/* 打字机光标用 currentColor，随上面一起变白 */
+#page-header.full_page #site-subtitle .typed-cursor {
+  color: #fff;
+}
+
+/* 3) 顶部导航：首页未滚动时同样是白字压浅图，补一层阴影。
+ *    只在 .full_page 生效；滚动后 .nav-fixed 有自带背景，不受影响。 */
+#page-header.full_page #nav #site-name,
+#page-header.full_page #nav .menus_items > .menus_item > a,
+#page-header.full_page #nav #nav-right a,
+#page-header.full_page #nav #page-name {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .8), 0 0 10px rgba(0, 0, 0, .5);
+}
+
+/* 4) 移动端：暗场跟着文字区域收紧 */
+@media (max-width: 768px) {
+  #page-header.full_page {
+    --hero-dim-core: .55;
+    --hero-dim-edge: .30;
+  }
+  #page-header.full_page #site-info::before {
+    width: 96vw;
+    height: 170px;
+    filter: blur(12px);
+  }
+}
+
+/* 5) 深色模式：背景本来就暗，暗场减半，别糊成一团 */
+[data-theme="dark"] #page-header.full_page {
+  --hero-dim-core: .28;
+  --hero-dim-edge: .14;
+}
