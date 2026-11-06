@@ -1217,7 +1217,7 @@ inject:
     - <style id="transPercent"></style> # 透明度调节
     - <style id="bgFilterParam"></style> # 背景滤镜
     - <span id="fps" aria-hidden="true"></span> # 帧率检测（纯装饰，读屏不播报）
-    - <style id="defineBg">:root{--default-bg:url(/assets/999.jpg);--darkmode-bg:url(/assets/004.jpg);--mobileday-bg:url(/assets/999.jpg);--mobilenight-bg:url(/assets/004.jpg);}</style> # 默认背景（内联兜底：即使 fomal.js 未执行，首屏也有背景图；运行时会被 fomal.js 覆盖）
+    - <style id="defineBg">:root{--default-bg:url(/assets/005.jpg);--darkmode-bg:url(/assets/004.jpg);--mobileday-bg:url(/assets/005.jpg);--mobilenight-bg:url(/assets/004.jpg);}</style> # 默认背景（内联兜底：即使 fomal.js 未执行，首屏也有背景图；运行时会被 fomal.js 覆盖）
     # 2026-10-16：本行是默认背景的「唯一数据源」，改这里即可全站生效。
     #   settings.js 的 resetBg_() 现在回写 beauty-boot.js 备份下来的本行内容（window.__configDefineBg），
     #   不再写死旧图 —— 以前两处各存一份，配置改了会被 resetBg_() 覆盖回旧图（打开时闪一下）。
